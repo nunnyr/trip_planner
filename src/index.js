@@ -1,3 +1,4 @@
+const buildMarker = require('./marker')
 console.log("Geography! More notes")
 
 const mapboxgl = require("mapbox-gl");
@@ -19,5 +20,13 @@ markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
 
 new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
 
+
+const marker = buildMarker("hotel", [-73.9605399, 40.7243401]); // or [-87.6354, 41.8885]
+marker.addTo(map);
+
+
+//const restaurant = buildMarker("restaurant", [-73.9560744, 40.6735182]); // or [-87.6354, 41.8885]
+
+buildMarker("restaurant", [-73.9560744, 40.6735182]).addTo(map);
 
 

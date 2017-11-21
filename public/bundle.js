@@ -67,6 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+const buildMarker = __webpack_require__(3)
 console.log("Geography! More notes")
 
 const mapboxgl = __webpack_require__(1);
@@ -88,6 +89,14 @@ markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
 
 new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
 
+
+const marker = buildMarker("hotel", [-73.9605399, 40.7243401]); // or [-87.6354, 41.8885]
+marker.addTo(map);
+
+
+//const restaurant = buildMarker("restaurant", [-73.9560744, 40.6735182]); // or [-87.6354, 41.8885]
+
+buildMarker("restaurant", [-73.9560744, 40.6735182]).addTo(map);
 
 
 
@@ -671,6 +680,48 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const mapboxgl = __webpack_require__(1);
+
+
+const iconURLs = {
+    hotels: "http://i.imgur.com/D9574Cu.png",
+    restaurants: "http://i.imgur.com/cqR6pUI.png",
+    activities: "http://i.imgur.com/WbMOfMl.png"
+};
+
+const buildMarker = (type, coords) => {
+    
+    if(type === 'hotel') {
+        const hotelEL = document.createElement("div");
+        hotelEL.style.width = "32px";
+        hotelEL.style.height = "39px";
+        hotelEL.style.backgroundImage = "url(http://i.imgur.com/D9574Cu.png)";
+        return new mapboxgl.Marker(hotelEL).setLngLat(coords);
+    }
+
+        if(type === 'restaurant') {
+            const restaurantEL = document.createElement("div");
+            restaurantEL.style.width = "32px";
+            restaurantEL.style.height = "39px";
+            restaurantEL.style.backgroundImage = "url(http://i.imgur.com/cqR6pUI.png)";
+            return new mapboxgl.Marker(restaurantEL).setLngLat(coords);
+        }
+             if(type === 'activity') {
+                const activityEL = document.createElement("div");
+                activityEL.style.width = "32px";
+                activityEL.style.height = "39px";
+                activityEL.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+                return new mapboxgl.Marker(activityEL).setLngLat(coords);
+            }
+};
+
+// `url(${iconURLs[markerType]}`
+module.exports = buildMarker;
 
 /***/ })
 /******/ ]);
