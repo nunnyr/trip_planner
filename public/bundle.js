@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-console.log("Geography!")
+console.log("Geography! More notes")
 
 const mapboxgl = __webpack_require__(1);
 
