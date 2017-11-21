@@ -1,1 +1,1 @@
-console.log("Creating trip planner")
+console.log("Creating trip planner, ready to change")
